@@ -8,11 +8,24 @@
 import UIKit
 
 final class SelectedMasterViewController: UIViewController {
-
+    struct Master {
+        let names: [String]
+        let surNames: [String]
+        let typeOfMaster: [String]
+        let experience: [String]
+        let phone: [String]
+        let masterImageName: UIImage
+        let pricesPerService: [String]
+        
+        var fullName: String {"\(names) \(surNames)"}
+    }
+    var master: [Master]!
+    
+    @IBOutlet var imageMasterView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
 }
