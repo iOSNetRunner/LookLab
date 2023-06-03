@@ -8,24 +8,9 @@
 import UIKit
 
 final class MasterListViewController: UITableViewController {
-    struct Master {
-        let names: [String]
-        let surNames: [String]
-        let typeOfMaster: [String]
-        let experience: [String]
-        let phone: [String]
-        let masterImageName: UIImage
-        let pricesPerService: [String]
-        
-        var fullName: String {"\(names) \(surNames)"}
-    }
+    
     var master: [Master]!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-       
-    }
 
     // MARK: - Table view data source
 
@@ -50,7 +35,7 @@ final class MasterListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let index = tableView.indexPathForSelectedRow else {return}
         guard let selectMasterVC = segue.destination as? SelectedMasterViewController else {return}
-        //selectMasterVC.master = master[index.row]
+        selectMasterVC.master = master[index.row]
     }
     
 

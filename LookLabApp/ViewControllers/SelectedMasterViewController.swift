@@ -9,14 +9,6 @@ import UIKit
 
 final class SelectedMasterViewController: UIViewController {
     
-    struct Master {
-        let experience: String
-        let phone: String
-        let masterImageName: UIImage
-        let pricesPerService: String
-        
-        var fullName: String
-    }
     var master: Master!
     
     @IBOutlet var imageMasterView: UIImageView!
@@ -26,9 +18,9 @@ final class SelectedMasterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupInfo()
     }
+    
     private func setupInfo(){
         navigationController?.title = master.fullName
         imageMasterView.image = master.masterImageName
