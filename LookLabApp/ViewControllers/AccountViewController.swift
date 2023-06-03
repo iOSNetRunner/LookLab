@@ -9,6 +9,8 @@ import UIKit
 
 final class AccountViewController: UIViewController {
 
+    var users: [User]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -16,7 +16,11 @@ final class WelcomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let aboutVC = segue.destination as? AboutUsViewController else { return }
-        aboutVC.developers = users
+        
+        if let aboutVC = segue.destination as? AboutUsViewController {
+            aboutVC.developers = users
+        } else if let loginVC = segue.destination as? LoginViewController {
+            loginVC.users = users
+        }
     }
 }

@@ -8,6 +8,9 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
+    
+    private let masters = Master.getMasters()
+    var user: [User]!
 
     override func viewDidLoad() {
         super.viewDidLoad()

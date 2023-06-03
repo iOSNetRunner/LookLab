@@ -13,19 +13,22 @@ final class LoginViewController: UIViewController {
     @IBOutlet var usernameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
-    private let user = ...
+    var users: [User]!
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("hello")
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let tabBarController = segue.destination as? TabBarController else { return }
+        guard let tabBarController = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabBarController.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            if let accountVC = viewController as? AccountViewController {
+                accountVC.users = users
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -36,24 +39,55 @@ final class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped() {
-        guard usernameTF.text = user, passwordTF.text == USERPASSWORD else {
+        guard usernameTF.text == "11", passwordTF.text == "11" else {
             showAlert(withTitle: "Wrong input",
                       andMessage: "Please, enter correct username and password",
                       textField: passwordTF)
             return
         }
-        performSegue(withIdentifier: "openAccountVC", sender: nil)
+        performSegue(withIdentifier: "toTabBar", sender: nil)
     }
     
     @IBAction func forgotInputData(_ sender: UIButton) {
         sender.tag == 0
-        ? showAlert(withTitle: "Username reminder", andMessage: "Your username is \(...)!\n 🧐")
-        : showAlert(withTitle: "Password reminder", andMessage: "Your password is \(...)!\n 🤔")
+        ? showAlert(withTitle: "Username reminder", andMessage: "Your username is  !\n 🧐")
+        : showAlert(withTitle: "Password reminder", andMessage: "Your password is  !\n 🤔")
     }
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         usernameTF.text = ""
         passwordTF.text = ""
+    }
+    
+    private func checkUsername(from input: String) -> String {
+        var usernames: [String] = []
+        var checkedUsername = ""
+        
+        for user in users {
+            usernames.append(user.username)
+        }
+        
+        if usernames.contains(input) {
+            checkedUsername = input
+        }
+        return checkedUsername
+    }
+    
+    
+    
+    private func checkPassword(from input: String) -> String {
+        var passwords: [String] = []
+        var checkedPassword = ""
+        
+        for user in users {
+            passwords.append(user.password)
+        }
+        
+        if passwords.contains(input) {
+            checkedPassword = input
+        }
+        
+        return checkedPassword
     }
     
     
