@@ -23,7 +23,7 @@ final class DataStore {
         "Galatskii",
         "Kruglov",
         "Sozontov",
-        "Roman's surname"
+        "Glavatskii"
     ]
     
     let personsImagesNames = [
