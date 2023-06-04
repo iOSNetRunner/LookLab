@@ -8,22 +8,24 @@
 import UIKit
 
 final class SelectedMasterViewController: UIViewController {
-
+    
+    var master: Master!
+    
+    @IBOutlet var imageMasterView: UIImageView!
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var contactLabel: UILabel!
+    @IBOutlet var experienceLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupInfo()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupInfo(){
+        navigationController?.title = master.fullName
+        imageMasterView.image = UIImage(named: master.masterImageName)
+        priceLabel.text = master.pricePerService
+        contactLabel.text = master.phone
+        experienceLabel.text = master.experience
     }
-    */
-
 }

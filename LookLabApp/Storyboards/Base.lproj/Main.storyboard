@@ -321,7 +321,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="wuJ-Ei-jWv" kind="show" trigger="accessoryAction" id="7Gm-B4-ysX"/>
+                                    <segue destination="wuJ-Ei-jWv" kind="show" id="0Fz-NP-45w"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -386,6 +386,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Name" id="8uv-TS-82Z"/>
+                    <connections>
+                        <outlet property="contactLabel" destination="eC6-HY-MbT" id="XiW-KW-Ctb"/>
+                        <outlet property="experienceLabel" destination="4I8-5Q-qT4" id="tWW-dS-UiL"/>
+                        <outlet property="imageMasterView" destination="N2i-YM-Y27" id="KcL-4W-Da1"/>
+                        <outlet property="priceLabel" destination="hAv-aa-gK0" id="Pyq-Vl-kZ5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwL-6b-yrM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -417,7 +423,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Wsn-Lk-9iG" kind="show" trigger="accessoryAction" id="Kes-Tx-hnV"/>
+                                    <segue destination="Wsn-Lk-9iG" kind="show" id="B3E-yo-rpx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -490,7 +496,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="3Cg-WM-t8Q" kind="show" id="Shv-ww-T35"/>
+                                    <segue destination="3Cg-WM-t8Q" kind="show" id="iKp-pe-CDZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
