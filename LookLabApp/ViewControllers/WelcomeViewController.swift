@@ -23,4 +23,7 @@ final class WelcomeViewController: UIViewController {
             loginVC.users = users
         }
     }
+    
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+    }
 }

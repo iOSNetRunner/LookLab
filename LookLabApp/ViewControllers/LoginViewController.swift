@@ -39,13 +39,13 @@ final class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped() {
-        guard usernameTF.text == "11", passwordTF.text == "11" else {
+        guard usernameTF.text == checkUsername(from: usernameTF.text ?? ""), passwordTF.text == checkPassword(from: passwordTF.text ?? "") else {
             showAlert(withTitle: "Wrong input",
                       andMessage: "Please, enter correct username and password",
                       textField: passwordTF)
             return
         }
-        performSegue(withIdentifier: "toTabBar", sender: nil)
+        performSegue(withIdentifier: "openAccountVC", sender: nil)
     }
     
     @IBAction func forgotInputData(_ sender: UIButton) {
@@ -61,7 +61,7 @@ final class LoginViewController: UIViewController {
     
     private func checkUsername(from input: String) -> String {
         var usernames: [String] = []
-        var checkedUsername = ""
+        var checkedUsername = "Username"
         
         for user in users {
             usernames.append(user.username)
@@ -77,7 +77,7 @@ final class LoginViewController: UIViewController {
     
     private func checkPassword(from input: String) -> String {
         var passwords: [String] = []
-        var checkedPassword = ""
+        var checkedPassword = "Password"
         
         for user in users {
             passwords.append(user.password)
