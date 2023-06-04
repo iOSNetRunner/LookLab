@@ -9,10 +9,13 @@ import UIKit
 
 final class AccountViewController: UIViewController {
 
-    var users: [User]!
+    @IBOutlet var welcomeLabel: UILabel!
+    
+    var username: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        welcomeLabel.text = "Welcome, \(username ?? "")!"
 
     }
     

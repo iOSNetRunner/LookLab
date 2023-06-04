@@ -24,7 +24,7 @@ final class LoginViewController: UIViewController {
         
         for viewController in viewControllers {
             if let accountVC = viewController as? AccountViewController {
-                accountVC.users = users
+                accountVC.username = usernameTF.text
             }
         }
     }
