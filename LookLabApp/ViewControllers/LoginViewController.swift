@@ -9,7 +9,6 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    
     @IBOutlet var usernameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
@@ -18,7 +17,6 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let tabBarController = segue.destination as? UITabBarController else { return }
@@ -36,9 +34,11 @@ final class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     
-    
-    
     @IBAction func loginButtonTapped() {
+        guard usernameTF.text != "", passwordTF.text != "" else {
+                showAlert(withTitle: "OOPS!", andMessage: "Fields can't be empty!")
+                return
+        }
         guard usernameTF.text == checkUsername(from: usernameTF.text ?? ""), passwordTF.text == checkPassword(from: passwordTF.text ?? "") else {
             showAlert(withTitle: "Wrong input",
                       andMessage: "Please, enter correct username and password",
@@ -50,8 +50,8 @@ final class LoginViewController: UIViewController {
     
     @IBAction func forgotInputData(_ sender: UIButton) {
         sender.tag == 0
-        ? showAlert(withTitle: "Username reminder", andMessage: "Your username is  !\n 🧐")
-        : showAlert(withTitle: "Password reminder", andMessage: "Your password is  !\n 🤔")
+        ? showAlert(withTitle: "Username reminder", andMessage: "You can use any of these usernames:\n\n \(getUsernames())\n\n 🧐")
+        : showAlert(withTitle: "Password reminder", andMessage: "You can use these passwords:\n\n \(getPasswords())\n\n 🤔")
     }
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
@@ -61,7 +61,7 @@ final class LoginViewController: UIViewController {
     
     private func checkUsername(from input: String) -> String {
         var usernames: [String] = []
-        var checkedUsername = "Username"
+        var checkedUsername = ""
         
         for user in users {
             usernames.append(user.username)
@@ -73,11 +73,9 @@ final class LoginViewController: UIViewController {
         return checkedUsername
     }
     
-    
-    
     private func checkPassword(from input: String) -> String {
         var passwords: [String] = []
-        var checkedPassword = "Password"
+        var checkedPassword = ""
         
         for user in users {
             passwords.append(user.password)
@@ -90,6 +88,21 @@ final class LoginViewController: UIViewController {
         return checkedPassword
     }
     
+    private func getUsernames() -> String {
+        var usernames: [String] = []
+        for user in users {
+            usernames.append(user.username)
+        }
+        return usernames.joined(separator: "\n\n")
+    }
+    
+    private func getPasswords() -> String {
+        var passwords: [String] = []
+        for user in users {
+            passwords.append(user.password)
+        }
+        return passwords.joined(separator: "\n\n")
+    }
     
     private func showAlert(withTitle title: String, andMessage message: String, textField: UITextField? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -99,6 +112,4 @@ final class LoginViewController: UIViewController {
         alert.addAction(closeAction)
         present(alert, animated: true)
     }
-  
-
 }
