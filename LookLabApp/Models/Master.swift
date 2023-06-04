@@ -14,69 +14,69 @@ struct Master {
     let phone: String
     let masterImageName: String
     let pricePerService: String
-    let workingDays: [String]
-    let workingHours: [String]
+    let sessionOptions: [(String, [String])]
     
     static func getMasters() -> [Master] {
         var masters: [Master] = []
         
-        var mastersNames = DataStore.shared.mastersNames.shuffled()
-        var typeOfMaster = DataStore.shared.typeOfMaster
-        var mastersExpertises = DataStore.shared.mastersExpertises
+        let mastersNames = DataStore.shared.mastersNames.shuffled()
+        let typeOfMaster = DataStore.shared.typeOfMaster.shuffled()
+        let mastersExpertises = DataStore.shared.mastersExpertises.shuffled()
         var mastersImagesNames = DataStore.shared.mastersImagesNames.shuffled()
         var mastersPhones = DataStore.shared.mastersPhones.shuffled()
-        var mastersWorkingDays = DataStore.shared.mastersWorkingDays.shuffled()
-        var masterWorkingHours = DataStore.shared.mastersWorkingHours.shuffled()
+        let mastersWorkingDays = DataStore.shared.mastersWorkingDays.shuffled()
+        let masterWorkingHours = DataStore.shared.mastersWorkingHours.shuffled()
         
-        for _ in mastersNames {
-            let masterName = mastersNames.removeFirst()
+        for masterName in mastersNames {
+            let masterName = masterName
             
             let typeOfMaster = typeOfMaster.randomElement() ?? "Handyman"
             
             let masterExpertise = mastersExpertises.randomElement()
-            var experience: String {
-                switch masterExpertise {
-                case let .trainee(Expertise: expertise, price: _):
-                    return expertise
-                case let .master(Expertise: expertise, price: _):
-                    return expertise
-                case let .expert(Expertise: expertise, price: _):
-                    return expertise
-                default:
-                    return "God"
-                }
-            }
             
-            var pricePerService: String {
-                switch masterExpertise {
-                case let .trainee(Expertise: _, price: price):
-                    return price
-                case let .master(Expertise: _, price: price):
-                    return price
-                case let .expert(Expertise: _, price: price):
-                    return price
-                default:
-                    return "On the house..."
-                }
+            var experience = ""
+            
+            var pricePerService = ""
+            
+            switch masterExpertise {
+            case let .trainee(Expertise: expertise, price: price):
+                experience = expertise
+                pricePerService = price
+            case let .master(Expertise: expertise, price: price):
+                experience = expertise
+                pricePerService = price
+            case let .expert(Expertise: expertise, price: price):
+                experience = expertise
+                pricePerService = price
+            default:
+                experience = "God"
+                pricePerService = "On the house.."
             }
             
             let phone = mastersPhones.removeFirst()
             
             let image = mastersImagesNames.removeFirst()
             
-            var workingDays: [String] = []
-            var particularMasterWorkingDays = mastersWorkingDays.shuffled()
-            for _ in 1...3 {
-                workingDays.append(particularMasterWorkingDays.removeFirst())
-            }
-            workingDays.sort()
+            var sessionOptions: [(date: String, hours: [String])] = []
             
-            var workingHours: [String] = []
-            var particularMasterWorkingHours = masterWorkingHours.shuffled()
+            var particularWorkingDays = mastersWorkingDays
+            
+            var particularWorkingHours = masterWorkingHours
+            
             for _ in 1...3 {
-                workingHours.append(particularMasterWorkingHours.removeFirst())
+                
+                let date = particularWorkingDays.removeFirst()
+                var hours: [String] = []
+                
+                for _ in 1...3 {
+                    let windowHours = particularWorkingHours.removeFirst()
+                    hours.append(windowHours)
+                }
+                hours.sort()
+                let sessionOption = (date, hours)
+                sessionOptions.append(sessionOption)
             }
-            workingHours.sort()
+            sessionOptions.sort { $0.date < $1.date }
             
             let master = Master(
                 fullName: masterName,
@@ -85,12 +85,10 @@ struct Master {
                 phone: phone,
                 masterImageName: image,
                 pricePerService: pricePerService,
-                workingDays: workingDays,
-                workingHours: workingHours
+                sessionOptions: sessionOptions
             )
             masters.append(master)
         }
-        
         
         return masters
     }

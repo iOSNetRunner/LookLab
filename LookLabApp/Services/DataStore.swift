@@ -16,31 +16,36 @@ final class DataStore {
         "Dmitrii",
         "Egor",
         "Fedor",
-        "Roman"
+        "Roman",
+        "123"
     ]
     
     let personsSurnames = [
         "Galatskii",
         "Kruglov",
         "Sozontov",
-        "Glavatskii"
+        "Glavatskii",
+        "123"
     ]
     
     let personsImagesNames = [
         "Dmitrii.jpg",
         "Egor.jpg",
         "Fedor.jpg",
-        "Roman.jpg"
+        "Roman.jpg",
+        "123"
     ]
     
     let usernames = [
         "iOSNetRunner",
         "yegorkruglov",
         "aviation_club",
-        "romazan126"
+        "romazan126",
+        "123"
     ]
     
     let passwords = [
+        "123",
         "123",
         "123",
         "123",
