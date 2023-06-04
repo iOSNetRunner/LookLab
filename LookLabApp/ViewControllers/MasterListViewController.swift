@@ -45,7 +45,7 @@ final class MasterListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let index = tableView.indexPathForSelectedRow else {return}
         guard let selectMasterVC = segue.destination as? SelectedMasterViewController else {return}
-        selectMasterVC.master = masters[index.row]
+        selectMasterVC.master = masters[index.section]
     }
     
 
