@@ -28,7 +28,7 @@ struct User {
         var usernames = DataStore.shared.usernames
         var passwords = DataStore.shared.passwords
         
-        for _ in 1...4 {
+        for _ in 1...names.count {
             let name = names.removeFirst()
             let surname = surnames.removeFirst()
             let personImageName = personsImagesNames.removeFirst()
