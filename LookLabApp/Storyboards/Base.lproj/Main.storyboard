@@ -321,7 +321,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="wuJ-Ei-jWv" kind="show" trigger="accessoryAction" id="7Gm-B4-ysX"/>
+                                    <segue destination="wuJ-Ei-jWv" kind="show" id="0Fz-NP-45w"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -490,7 +490,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="3Cg-WM-t8Q" kind="show" id="Veu-Si-TDQ"/>
+                                    <segue destination="3Cg-WM-t8Q" kind="show" id="iKp-pe-CDZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
