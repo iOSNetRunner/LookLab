@@ -10,9 +10,24 @@ import UIKit
 final class TabBarController: UITabBarController {
     
     private let masters = Master.getMasters()
-    var user: [User]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        transferData()
     }
+    
+    private func transferData() {
+        guard let viewControllers else { return }
+        
+        for viewController in viewControllers {
+            if let navigationVC = viewController as? UINavigationController {
+                if let masterListVC = navigationVC.topViewController as? MasterListViewController {
+                    masterListVC.masters = masters
+                } else if let applyForServiceVC = navigationVC.topViewController as? ApplyForServiceTableViewController {
+                    applyForServiceVC.masters = masters
+                }
+            }
+        }
+    }
+    
 }
