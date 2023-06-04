@@ -14,6 +14,9 @@ final class MasterListViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         masters.count
     }
@@ -24,7 +27,7 @@ final class MasterListViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
        
         content.text = master.fullName
-        content.image = UIImage(named: masters.masterImageName)
+        content.image = UIImage(named: masters[indexPath.row].masterImageName)
         
         cell.contentConfiguration = content
         return cell

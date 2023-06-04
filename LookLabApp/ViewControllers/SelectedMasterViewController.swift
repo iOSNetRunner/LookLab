@@ -27,5 +27,6 @@ final class SelectedMasterViewController: UIViewController {
         priceLabel.text = master.pricePerService
         contactLabel.text = master.phone
         experienceLabel.text = master.experience
+        tabBarItem.title = master.fullName
     }
 }
