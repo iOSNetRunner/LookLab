@@ -24,7 +24,7 @@ final class TabBarController: UITabBarController {
                 if let masterListVC = navigationVC.topViewController as? MasterListViewController {
                     masterListVC.masters = masters
                 } else if let applyForServiceVC = navigationVC.topViewController as? ApplyForServiceTableViewController {
-      //              applyForServiceVC.masters = masters
+                    applyForServiceVC.masters = masters
                 }
             }
         }
