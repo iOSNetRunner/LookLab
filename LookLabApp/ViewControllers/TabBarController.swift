@@ -8,22 +8,26 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
+    
+    private let masters = Master.getMasters()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        transferData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func transferData() {
+        guard let viewControllers else { return }
+        
+        for viewController in viewControllers {
+            if let navigationVC = viewController as? UINavigationController {
+                if let masterListVC = navigationVC.topViewController as? MasterListViewController {
+                    masterListVC.masters = masters
+                } else if let applyForServiceVC = navigationVC.topViewController as? ApplyForServiceTableViewController {
+                    applyForServiceVC.masters = masters
+                }
+            }
+        }
     }
-    */
-
+    
 }
