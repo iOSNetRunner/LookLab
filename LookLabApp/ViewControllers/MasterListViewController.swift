@@ -17,13 +17,17 @@ final class MasterListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
         masters.count
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "masterNameCell", for: indexPath)
-        let master = masters[indexPath.row]
+        let master = masters[indexPath.section]
         var content = cell.defaultContentConfiguration()
        
         content.text = master.fullName
@@ -31,6 +35,9 @@ final class MasterListViewController: UITableViewController {
         
         cell.contentConfiguration = content
         return cell
+    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        masters[section].typeOfMaster
     }
     
     // MARK: - Navigation
