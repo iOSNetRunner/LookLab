@@ -65,12 +65,12 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let appointment = appointments[indexPath.row]
             let service = appointment.master.typeOfMaster
-            let day = appointment.dateAndHour.date
+            let date = appointment.dateAndHour.date
             let hour = appointment.dateAndHour.hour
             let masterName = appointment.master.fullName
             let price = appointment.master.pricePerService
             
-            let appointmentLine = "\(service) scheduled on \(day) at \(hour) . Master: \(masterName). Price: \(price)."
+            let appointmentLine = "\(service) scheduled on \(date) at \(hour) . Master: \(masterName). Price: \(price)."
             content.text = appointmentLine
             cell.contentConfiguration = content
             

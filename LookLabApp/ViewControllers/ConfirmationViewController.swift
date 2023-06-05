@@ -8,13 +8,11 @@
 import UIKit
 
 final class ConfirmationViewController: UIViewController {
-
+    
     @IBOutlet var serviceLabel: UILabel!
     @IBOutlet var masterLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
-    
-    @IBAction var confirmButton: UIButton!
     
     var master: Master!
     var date: String!
@@ -33,15 +31,14 @@ final class ConfirmationViewController: UIViewController {
         timeLabel.text = "Time: \(dateLine)"
     }
     
-    
     @IBAction func confirmButtonPressed() {
         guard let tabBarController = tabBarController as? TabBarController else { return }
-
+        
         let appointment = Appointment(master: master, dateAndHour: (date, hour))
         
         delegate = tabBarController
         delegate.addAppointmetToAppointments(appointment)
     }
     
-
+    
 }

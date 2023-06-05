@@ -24,6 +24,12 @@ final class SelectedMasterViewController: UIViewController {
         setupInfo()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        imageMasterView.layer.cornerRadius = imageMasterView.frame.height / 2
+    }
+    
     private func setupInfo(){
         imageMasterView.image = UIImage(named: master.masterImageName)
         priceLabel.text = "Price: \(master.pricePerService)"

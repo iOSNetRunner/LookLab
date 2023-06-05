@@ -8,15 +8,14 @@
 import UIKit
 
 final class ApplyForServiceTableViewController: UITableViewController {
-
+    
     var masters: [Master]!
     let typesOfServices = DataStore.shared.typeOfMaster
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         typesOfServices.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "specializationCell") else { return  UITableViewCell()}
@@ -35,6 +34,5 @@ final class ApplyForServiceTableViewController: UITableViewController {
         let filteredMasters = masters.filter { $0.typeOfMaster == typesOfServices[index.row] }
         masterSelectionVC.masters = filteredMasters
     }
-
-
+    
 }
