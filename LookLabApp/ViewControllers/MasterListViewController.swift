@@ -36,6 +36,7 @@ final class MasterListViewController: UITableViewController {
        
         content.text = master.fullName
         content.image = UIImage(named: masters[indexPath.section].masterImageName)
+        content.imageProperties.cornerRadius = tableView.rowHeight / 2
         cell.backgroundColor = .systemBrown
         
         cell.contentConfiguration = content
@@ -62,9 +63,6 @@ final class MasterListViewController: UITableViewController {
         
         return contentView
     }
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        masters[section].typeOfMaster
-//    }
     
     // MARK: - Navigation
 

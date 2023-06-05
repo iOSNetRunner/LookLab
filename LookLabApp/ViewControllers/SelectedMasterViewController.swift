@@ -20,6 +20,7 @@ final class SelectedMasterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBrown
         view.setGradientBackground()
+        
         setupInfo()
     }
     
