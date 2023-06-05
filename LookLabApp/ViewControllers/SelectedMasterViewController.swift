@@ -22,7 +22,7 @@ final class SelectedMasterViewController: UIViewController {
     }
     
     private func setupInfo(){
-        navigationController?.title = master.fullName
+        title = master.fullName
         imageMasterView.image = UIImage(named: master.masterImageName)
         priceLabel.text = master.pricePerService
         contactLabel.text = master.phone
