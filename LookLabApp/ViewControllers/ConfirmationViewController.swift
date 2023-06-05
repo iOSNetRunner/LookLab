@@ -14,6 +14,8 @@ final class ConfirmationViewController: UIViewController {
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     
+    @IBAction var confirmButton: UIButton!
+    
     var master: Master!
     var date: String!
     var hour: String!

@@ -18,6 +18,9 @@ final class SelectedMasterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBrown
+        view.setGradientBackground()
+        
         setupInfo()
     }
     

@@ -17,6 +17,7 @@ final class ApplyForServiceTableViewController: UITableViewController {
         typesOfServices.count
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "specializationCell") else { return  UITableViewCell()}
         
