@@ -16,6 +16,8 @@ final class MasterListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 100
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,7 +33,7 @@ final class MasterListViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
        
         content.text = master.fullName
-        content.image = UIImage(named: masters[indexPath.row].masterImageName)
+        content.image = UIImage(named: masters[indexPath.section].masterImageName)
         
         cell.contentConfiguration = content
         return cell
