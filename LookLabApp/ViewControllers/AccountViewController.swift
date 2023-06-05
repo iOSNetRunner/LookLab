@@ -65,8 +65,8 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let appointment = appointments[indexPath.row]
             let service = appointment.master.typeOfMaster
-            let day = appointment.dateAndHour.Date
-            let hour = appointment.dateAndHour.Hour
+            let day = appointment.dateAndHour.date
+            let hour = appointment.dateAndHour.hour
             let masterName = appointment.master.fullName
             let price = appointment.master.pricePerService
             

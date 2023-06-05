@@ -9,5 +9,5 @@ import Foundation
 
 struct Appointment {
     let master: Master
-    let dateAndHour: (Date: String, Hour: String)
+    let dateAndHour: (date: String, hour: String)
 }

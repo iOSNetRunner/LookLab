@@ -15,7 +15,7 @@ final class ConfirmationViewController: UIViewController {
     @IBOutlet var timeLabel: UILabel!
     
     var master: Master!
-    var day: String!
+    var date: String!
     var hour: String!
     
     unowned var delegate: ConfirmationViewControllerDelegate!
@@ -23,7 +23,7 @@ final class ConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dateLine = "\(day ?? "") at \(hour ?? "")"
+        let dateLine = "\(date ?? "") at \(hour ?? "")"
         
         serviceLabel.text = "Service: \(master.typeOfMaster)"
         masterLabel.text = "Master: \(master.fullName)"
@@ -35,7 +35,7 @@ final class ConfirmationViewController: UIViewController {
     @IBAction func confirmButtonPressed() {
         guard let tabBarController = tabBarController as? TabBarController else { return }
 
-        let appointment = Appointment(master: master, dateAndHour: (day, hour))
+        let appointment = Appointment(master: master, dateAndHour: (date, hour))
         
         delegate = tabBarController
         delegate.addAppointmetToAppointments(appointment)

@@ -43,7 +43,7 @@ final class DateTableViewController: UITableViewController {
         let selectedHour = master.sessionOptions[indexPath.section].hours[indexPath.row]
         
         checkDetailsVC.master = master
-        checkDetailsVC.day = selectedDay
+        checkDetailsVC.date = selectedDay
         checkDetailsVC.hour = selectedHour
     }
 
