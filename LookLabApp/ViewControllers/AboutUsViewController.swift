@@ -35,8 +35,9 @@ final class AboutUsViewController: UIViewController {
             case "Dmitrii": devOne.text = developer.fullName.uppercased()
             case "Egor": devTwo.text = developer.fullName.uppercased()
             case "Fedor": devThree.text = developer.fullName.uppercased()
+            case "Roman": devFour.text = developer.fullName.uppercased()
             default:
-                devFour.text = developer.fullName.uppercased()
+                print("Hello, Anna")
             }
         }
     }
