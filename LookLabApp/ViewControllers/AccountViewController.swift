@@ -15,6 +15,7 @@ final class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.setGradientBackground()
         welcomeLabel.text = "Welcome, \(username ?? "")!"
 
     }

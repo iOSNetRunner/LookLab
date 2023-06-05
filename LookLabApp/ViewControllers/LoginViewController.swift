@@ -16,6 +16,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.setGradientBackground()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
