@@ -84,7 +84,7 @@ final class DataStore {
         mastersExpertises.expert(Expertise: "Expert", price: "3000 RUB"),
     ]
     
-    let mastersWorkingDays = [
+    let mastersWorkingDates = [
         "12 June 2023",
         "13 June 2023",
         "14 June 2023",

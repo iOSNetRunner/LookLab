@@ -9,12 +9,8 @@ import UIKit
 
 final class SuccessApplyViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        @IBAction func dismissButtonPressed() {
-            navigationController?.popToRootViewController(animated: true)
-        }
+    @IBAction func dismissButtonPressed() {
+        navigationController?.popToRootViewController(animated: true)
     }
     
 }

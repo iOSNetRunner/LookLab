@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5DB618952A2B6E950077DB2F /* Master.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB618942A2B6E950077DB2F /* Master.swift */; };
+		5DEDAC272A2E4D2000EB8DF9 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEDAC262A2E4D2000EB8DF9 /* Appointment.swift */; };
 		60AA3BD32A2A342000ECD8F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AA3BD22A2A342000ECD8F4 /* AppDelegate.swift */; };
 		60AA3BD52A2A342000ECD8F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AA3BD42A2A342000ECD8F4 /* SceneDelegate.swift */; };
 		60AA3BDA2A2A342000ECD8F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60AA3BD82A2A342000ECD8F4 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		5DB618942A2B6E950077DB2F /* Master.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Master.swift; sourceTree = "<group>"; };
+		5DEDAC262A2E4D2000EB8DF9 /* Appointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		60AA3BCF2A2A342000ECD8F4 /* LookLabApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LookLabApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AA3BD22A2A342000ECD8F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60AA3BD42A2A342000ECD8F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				60AA3C042A2A801200ECD8F4 /* User.swift */,
 				5DB618942A2B6E950077DB2F /* Master.swift */,
+				5DEDAC262A2E4D2000EB8DF9 /* Appointment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				60AA3C152A2A848600ECD8F4 /* ConfirmationViewController.swift in Sources */,
 				60AA3C0D2A2A82F200ECD8F4 /* SelectedMasterViewController.swift in Sources */,
 				60AA3C132A2A844000ECD8F4 /* DateTableViewController.swift in Sources */,
+				5DEDAC272A2E4D2000EB8DF9 /* Appointment.swift in Sources */,
 				60AA3C032A2A7FF300ECD8F4 /* Extension + UIView.swift in Sources */,
 				60AA3C0F2A2A838100ECD8F4 /* ApplyForServiceTableViewController.swift in Sources */,
 				60AA3C052A2A801200ECD8F4 /* User.swift in Sources */,
