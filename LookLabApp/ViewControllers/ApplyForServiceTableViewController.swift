@@ -19,7 +19,7 @@ final class ApplyForServiceTableViewController: UITableViewController {
        
        
         tableView.dataSource = self
-        //masters = Master.getMasters() // получаем список мастеров
+        masters = Master.getMasters() // получаем список мастеров
     }
     
     // MARK: - Table view data source
@@ -38,7 +38,6 @@ final class ApplyForServiceTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "specializationCell", for: indexPath)
        
         var content = cell.defaultContentConfiguration()
-         
         content.text = typeOfServece[indexPath.row]
         cell.contentConfiguration = content
         
@@ -56,12 +55,13 @@ final class ApplyForServiceTableViewController: UITableViewController {
         guard let index = tableView.indexPathForSelectedRow else {return}
         guard let applyMasterVC = segue.destination as? ApplyMasterTableViewController else {return}
         
-        let filtredMasters = masters.filter { $0.typeOfMaster == typeOfServece[index.row]
+        let filteredMasters = masters.filter { $0.typeOfMaster == typeOfServece[index.row] }
+            applyMasterVC.masters = filteredMasters
         }
         
     }
     
-}
+
 
 
 

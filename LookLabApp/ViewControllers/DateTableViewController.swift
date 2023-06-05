@@ -9,6 +9,7 @@ import UIKit
 
 final class DateTableViewController: UITableViewController {
 
+    var master: Master!
     override func viewDidLoad() {
         super.viewDidLoad()
 
