@@ -17,10 +17,25 @@ final class AccountViewController: UIViewController {
         super.viewDidLoad()
         view.setGradientBackground()
         welcomeLabel.text = "Welcome, \(username ?? "")!"
+        
+        getArrangedAppointments()
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getArrangedAppointments()
+    }
     
-
+    private func getArrangedAppointments() {
+        guard let tabBarController = tabBarController as? TabBarController else { return }
+        let appointments = tabBarController.appointments
+        
+        if appointments.isEmpty {
+            print(appointments)
+        } else {
+            appointments.forEach { print($0.master.fullName, $0.dateAndHour) }
+        }
+    }
   
 
 }
