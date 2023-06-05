@@ -17,6 +17,8 @@ final class MasterListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 100
+        tableView.backgroundColor = .systemBrown
+        
         
     }
     
@@ -34,13 +36,35 @@ final class MasterListViewController: UITableViewController {
        
         content.text = master.fullName
         content.image = UIImage(named: masters[indexPath.section].masterImageName)
+        cell.backgroundColor = .systemBrown
         
         cell.contentConfiguration = content
         return cell
     }
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        masters[section].typeOfMaster
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let contentView = UIView()
+        contentView.backgroundColor = .brown
+        
+        let tableFullname = UILabel(
+            frame: CGRect(
+                x: 16,
+                y: 3,
+                width: tableView.frame.width,
+                height: 20
+            )
+        )
+        
+        tableFullname.text = masters[section].fullName
+        tableFullname.font = UIFont.boldSystemFont(ofSize: 17)
+        tableFullname.textColor = .white
+        contentView.addSubview(tableFullname)
+        
+        return contentView
     }
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        masters[section].typeOfMaster
+//    }
     
     // MARK: - Navigation
 
