@@ -10,32 +10,76 @@ import UIKit
 final class AccountViewController: UIViewController {
 
     @IBOutlet var welcomeLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var noAppointmentsLabel: UILabel!
     
     var username: String!
+    var appointments: [Appointment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         view.setGradientBackground()
         welcomeLabel.text = "Welcome, \(username ?? "")!"
-        
-        getArrangedAppointments()
-
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getArrangedAppointments()
     }
     
-    private func getArrangedAppointments() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateAppointments()
+    }
+    
+    
+    private func updateAppointments() {
         guard let tabBarController = tabBarController as? TabBarController else { return }
-        let appointments = tabBarController.appointments
+        appointments = tabBarController.appointments
+        if appointments.isEmpty {
+            tableView.isHidden = true
+            noAppointmentsLabel.isHidden = false
+        } else {
+            tableView.isHidden = false
+            noAppointmentsLabel.isHidden = true
+        }
+        tableView.reloadData()
+    }
+
+}
+
+extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        appointments.isEmpty ? 1 : appointments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "appointmentCell") else { return UITableViewCell()}
+        
+        var content = cell.defaultContentConfiguration()
         
         if appointments.isEmpty {
-            print(appointments)
+            content.text = "You have no appointments. You can arrange one at Apply section."
+            cell.contentConfiguration = content
+            
+            return cell
         } else {
-            appointments.forEach { print($0.master.fullName, $0.dateAndHour) }
+            let appointment = appointments[indexPath.row]
+            let service = appointment.master.typeOfMaster
+            let day = appointment.dateAndHour.Date
+            let hour = appointment.dateAndHour.Hour
+            let masterName = appointment.master.fullName
+            let price = appointment.master.pricePerService
+            
+            let appointmentLine = "\(service) scheduled on \(day) at \(hour) . Master: \(masterName). Price: \(price)."
+            content.text = appointmentLine
+            cell.contentConfiguration = content
+            
+            return cell
         }
     }
-  
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
