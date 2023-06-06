@@ -8,6 +8,13 @@ import UIKit
 
 final class ApplyMasterTableViewController: UITableViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.backgroundColor = .clear
+        view.backgroundColor = .systemBrown
+        view.setGradientBackground()
+    }
+    
     var masters: [Master]!
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
