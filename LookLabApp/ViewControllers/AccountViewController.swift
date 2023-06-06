@@ -11,10 +11,9 @@ final class AccountViewController: UIViewController {
 
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var noAppointmentsLabel: UILabel!
     
     var username: String!
-    var appointments: [Appointment] = []
+    private var appointments: [Appointment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,23 +27,19 @@ final class AccountViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
         updateAppointments()
     }
-    
     
     private func updateAppointments() {
         guard let tabBarController = tabBarController as? TabBarController else { return }
         appointments = tabBarController.appointments
-        if appointments.isEmpty {
-            tableView.isHidden = true
-            noAppointmentsLabel.isHidden = false
-        } else {
-            tableView.isHidden = false
-            noAppointmentsLabel.isHidden = true
-        }
         tableView.reloadData()
     }
-
+    
+    @IBAction func unwindSuccess(segue: UIStoryboardSegue) {
+    }
+    
 }
 
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
@@ -56,9 +51,11 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "appointmentCell") else { return UITableViewCell()}
         
         var content = cell.defaultContentConfiguration()
+        let font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        content.textProperties.font = font
         
         if appointments.isEmpty {
-            content.text = "You have no appointments. You can arrange one at Apply section."
+            content.text = "You have no appointments.\nYou can arrange one at Apply section."
             cell.contentConfiguration = content
             
             return cell
@@ -70,7 +67,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
             let masterName = appointment.master.fullName
             let price = appointment.master.pricePerService
             
-            let appointmentLine = "\(service) scheduled on \(date) at \(hour) . Master: \(masterName). Price: \(price)."
+            let appointmentLine = "\(service.uppercased()) scheduled on: \n\(date) at \(hour) \nMaster: \(masterName.uppercased()) \nPrice: \(price)"
             content.text = appointmentLine
             cell.contentConfiguration = content
             
@@ -81,5 +78,4 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }

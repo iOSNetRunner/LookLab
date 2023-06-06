@@ -22,6 +22,7 @@ final class ConfirmationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.setGradientBackground()
         
         let dateLine = "\(date ?? "") at \(hour ?? "")"
         

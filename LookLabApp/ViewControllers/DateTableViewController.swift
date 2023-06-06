@@ -11,12 +11,32 @@ final class DateTableViewController: UITableViewController {
     
     var master: Master!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.backgroundColor = .clear
+        view.backgroundColor = .systemBrown
+        view.setGradientBackground()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         master.sessionOptions.count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        master.sessionOptions[section].date
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let contentView = UIView()
+        contentView.backgroundColor = .clear
+        let sectionTitle = UILabel(
+            frame: CGRect(
+                x: 16, y: 3,
+                width: tableView.frame.width,
+                height: 20)
+        )
+        sectionTitle.text = master.sessionOptions[section].date
+        sectionTitle.font = UIFont.boldSystemFont(ofSize: 17)
+        sectionTitle.textColor = .lightGray
+        contentView.addSubview(sectionTitle)
+        return contentView
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
