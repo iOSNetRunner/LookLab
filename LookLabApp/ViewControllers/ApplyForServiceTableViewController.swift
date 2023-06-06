@@ -9,6 +9,13 @@ import UIKit
 
 final class ApplyForServiceTableViewController: UITableViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.backgroundColor = .clear
+        view.backgroundColor = .systemBrown
+        view.setGradientBackground()
+    }
+    
     var masters: [Master]!
     let typesOfServices = DataStore.shared.typeOfMaster
     

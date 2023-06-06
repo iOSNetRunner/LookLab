@@ -66,7 +66,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
             let masterName = appointment.master.fullName
             let price = appointment.master.pricePerService
             
-            let appointmentLine = "\(service.uppercased()) scheduled on: \n\(date) at \(hour) \nMaster: \(masterName) \nPrice: \(price)"
+            let appointmentLine = "\(service.uppercased()) scheduled on: \n\(date) at \(hour) \nMaster: \(masterName.uppercased()) \nPrice: \(price)"
             content.text = appointmentLine
             cell.contentConfiguration = content
             

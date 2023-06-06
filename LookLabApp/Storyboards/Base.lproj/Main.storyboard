@@ -511,10 +511,10 @@
         <scene sceneID="35g-Lm-WBv">
             <objects>
                 <tableViewController id="5Pl-nS-tcg" customClass="ApplyForServiceTableViewController" customModule="LookLabApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="yRR-SK-xYs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="yRR-SK-xYs">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="specializationCell" textLabel="Uk1-hw-DNK" style="IBUITableViewCellStyleDefault" id="80x-3m-1OT">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
@@ -532,6 +532,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="Wsn-Lk-9iG" kind="show" id="B3E-yo-rpx"/>
                                 </connections>
@@ -637,8 +638,11 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCZ-hn-nSY">
                                 <rect key="frame" x="154" y="644.66666666666663" width="85" height="34.333333333333371"/>
+                                <color key="tintColor" red="0.40977589559834077" green="0.75183475378787878" blue="0.38541732016432062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Confirm"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Confirm">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="confirmButtonPressed" destination="3Cg-WM-t8Q" eventType="touchUpInside" id="ozG-bI-yhf"/>
                                     <segue destination="HAx-ig-dSO" kind="presentation" modalPresentationStyle="fullScreen" id="a8G-7y-Bo0"/>
@@ -675,7 +679,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3TR-dj-Y17"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
                             <constraint firstItem="3TR-dj-Y17" firstAttribute="bottom" secondItem="CCZ-hn-nSY" secondAttribute="bottom" constant="90" id="0d6-Nk-qIB"/>
                             <constraint firstItem="fmJ-Ru-giD" firstAttribute="top" secondItem="99f-dG-TFf" secondAttribute="bottom" constant="50" id="BWh-OM-JJN"/>
