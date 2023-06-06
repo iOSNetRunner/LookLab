@@ -9,8 +9,18 @@ import UIKit
 
 final class SuccessApplyViewController: UIViewController {
 
-    @IBAction func dismissButtonPressed() {
-        navigationController?.popToRootViewController(animated: true)
+    @IBOutlet var successIcon: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.setGradientBackground()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.8) {
+            self.successIcon.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
+        }
+    }
 }
