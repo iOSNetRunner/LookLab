@@ -9,9 +9,12 @@ final class MasterListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = .clear
+        view.backgroundColor = .systemBrown
         tableView.rowHeight = 100
-        tableView.backgroundColor = .systemBrown
         
+        navigationController?.navigationBar.barTintColor = .systemBrown
+        tabBarController?.tabBar.barTintColor = .black
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,6 +31,7 @@ final class MasterListViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         
         content.text = master.fullName
+        content.secondaryText = master.typeOfMaster
         content.image = UIImage(named: masters[indexPath.section].masterImageName)
         content.imageProperties.cornerRadius = tableView.rowHeight / 2
         cell.backgroundColor = .systemBrown
