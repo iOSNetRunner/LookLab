@@ -14,7 +14,7 @@ struct Master {
     let phone: String
     let masterImageName: String
     let pricePerService: String
-    let sessionOptions: [(date: String, hours: [String])]
+    var sessionOptions: [(date: String, hours: [String])]
     
     static func getMasters() -> [Master] {
         var masters: [Master] = []

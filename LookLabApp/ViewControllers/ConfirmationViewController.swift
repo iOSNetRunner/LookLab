@@ -39,6 +39,7 @@ final class ConfirmationViewController: UIViewController {
         
         delegate = tabBarController
         delegate.addAppointmetToAppointments(appointment)
+        delegate.removeSesionOptionFrom(master, on: date, at: hour)
     }
     
     

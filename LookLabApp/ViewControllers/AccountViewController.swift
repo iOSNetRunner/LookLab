@@ -15,6 +15,8 @@ final class AccountViewController: UIViewController {
     var username: String!
     private var appointments: [Appointment] = []
     
+    unowned var delegate: AccountViewControllerDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,5 +79,37 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, performPrimaryActionForRowAt indexPath: IndexPath) {
+        
+        if !appointments.isEmpty {
+            presentAlert()
+        }
+        
+        func presentAlert() {
+            let alert = UIAlertController(title: "Cancel appointment?", message: "You can reschedule at apply section", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "YES", style: .destructive) { _ in
+                cancelAppointment()
+            }
+            let closeAction = UIAlertAction(title: "NO", style: .cancel)
+            alert.addAction(closeAction)
+            alert.addAction(confirmAction)
+            present(alert, animated: true)
+        }
+        
+        func cancelAppointment() {
+            guard let tabBarController = tabBarController as? TabBarController else { return }
+            
+            let appointment = appointments[indexPath.row]
+            
+            delegate = tabBarController
+            delegate.removeAppointmetFromAppointments(appointment)
+            delegate.addSesionOptionFor(appointment.master,
+                                        on: appointment.dateAndHour.date,
+                                        at: appointment.dateAndHour.hour)
+            updateAppointments()
+            tableView.reloadData()
+        }
     }
 }

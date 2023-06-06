@@ -9,6 +9,9 @@ import UIKit
 
 final class ApplyForServiceTableViewController: UITableViewController {
     
+    var masters: [Master]!
+    let typesOfServices = DataStore.shared.typeOfMaster
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .clear
@@ -16,9 +19,9 @@ final class ApplyForServiceTableViewController: UITableViewController {
         view.setGradientBackground()
     }
     
-    var masters: [Master]!
-    let typesOfServices = DataStore.shared.typeOfMaster
-    
+    override func viewWillAppear(_ animated: Bool) {
+        updateMasters()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         typesOfServices.count
@@ -40,6 +43,15 @@ final class ApplyForServiceTableViewController: UITableViewController {
         
         let filteredMasters = masters.filter { $0.typeOfMaster == typesOfServices[index.row] }
         masterSelectionVC.masters = filteredMasters
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func updateMasters() {
+        guard let tabBarController = tabBarController as? TabBarController else { return }
+        masters = tabBarController.masters
     }
     
 }
