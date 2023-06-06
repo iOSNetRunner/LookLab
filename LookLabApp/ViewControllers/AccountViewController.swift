@@ -83,14 +83,20 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, performPrimaryActionForRowAt indexPath: IndexPath) {
         
-        let alert = UIAlertController(title: "Cancel appointment?", message: "You can reschedule at apply section", preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "YES", style: .destructive) { _ in
-            cancelAppointment()
+        if !appointments.isEmpty {
+            presentAlert()
         }
-        let closeAction = UIAlertAction(title: "NO", style: .cancel)
-        alert.addAction(closeAction)
-        alert.addAction(confirmAction)
-        present(alert, animated: true)
+        
+        func presentAlert() {
+            let alert = UIAlertController(title: "Cancel appointment?", message: "You can reschedule at apply section", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "YES", style: .destructive) { _ in
+                cancelAppointment()
+            }
+            let closeAction = UIAlertAction(title: "NO", style: .cancel)
+            alert.addAction(closeAction)
+            alert.addAction(confirmAction)
+            present(alert, animated: true)
+        }
         
         func cancelAppointment() {
             guard let tabBarController = tabBarController as? TabBarController else { return }
