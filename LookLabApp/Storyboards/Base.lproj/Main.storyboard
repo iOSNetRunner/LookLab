@@ -175,7 +175,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleAspectFit" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CGz-uL-FGg">
-                                <rect key="frame" x="9" y="286" width="375" height="375.33333333333337"/>
+                                <rect key="frame" x="9" y="319.66666666666674" width="375" height="375.33333333333337"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="375" id="3gJ-TF-vcu"/>
@@ -187,7 +187,7 @@
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
                             <constraint firstItem="CGz-uL-FGg" firstAttribute="centerX" secondItem="tp1-eM-cVk" secondAttribute="centerX" id="5xj-ST-tn2"/>
-                            <constraint firstItem="CGz-uL-FGg" firstAttribute="centerY" secondItem="tp1-eM-cVk" secondAttribute="centerY" multiplier="1:0.9" id="9Gp-9T-TAv"/>
+                            <constraint firstItem="CGz-uL-FGg" firstAttribute="centerY" secondItem="tp1-eM-cVk" secondAttribute="centerY" multiplier="1:0.84" id="9Gp-9T-TAv"/>
                             <constraint firstItem="PeN-EF-MaE" firstAttribute="centerX" secondItem="tp1-eM-cVk" secondAttribute="centerX" id="H3f-8P-ccL"/>
                             <constraint firstItem="zAw-6W-CZd" firstAttribute="bottom" secondItem="OH7-lY-ctk" secondAttribute="bottom" constant="50" id="M0Q-6u-Sqh"/>
                             <constraint firstItem="UUr-ix-mJl" firstAttribute="leading" secondItem="zAw-6W-CZd" secondAttribute="leading" constant="16" id="eBq-gX-ags"/>
@@ -307,7 +307,7 @@
                     <connections>
                         <outlet property="passwordTF" destination="TNc-KU-ih8" id="xts-UC-JhW"/>
                         <outlet property="usernameTF" destination="djx-FW-S1A" id="Thz-pL-sMw"/>
-                        <segue destination="pR3-66-tfT" kind="presentation" identifier="openAccountVC" modalPresentationStyle="fullScreen" id="UaL-KF-Nmr"/>
+                        <segue destination="pR3-66-tfT" kind="presentation" identifier="openAccountVC" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="UaL-KF-Nmr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqN-0V-XTh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -337,7 +337,7 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="jTN-4u-TQd" kind="unwind" unwindAction="unwindSegueWithSegue:" id="78m-DG-psn"/>
+                                    <segue destination="jTN-4u-TQd" kind="unwind" unwindAction="unwindSegueWithSegue:" id="OF3-D4-nmO"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleAspectFit" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Shp-JS-6vj">
@@ -351,6 +351,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VCH-Z4-T3N">
                                 <rect key="frame" x="16" y="160.99999999999997" width="361" height="473.33333333333326"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="appointmentCell" id="C5I-S8-cbH">
                                         <rect key="frame" x="0.0" y="50" width="361" height="43.666667938232422"/>
@@ -724,7 +725,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Dismiss"/>
                                 <connections>
-                                    <segue destination="dLE-Pi-8sq" kind="unwind" unwindAction="unwindSuccessWithSegue:" id="OCf-8T-49K"/>
+                                    <segue destination="dLE-Pi-8sq" kind="unwind" unwindAction="unwindSuccessWithSegue:" id="1Pu-Lu-kE3"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="SVk-7E-2Sd">
@@ -800,12 +801,13 @@
         <!--Tab Bar Controller-->
         <scene sceneID="cVi-sh-fwp">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="pR3-66-tfT" customClass="TabBarController" customModule="LookLabApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="pR3-66-tfT" customClass="TabBarController" customModule="LookLabApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xvo-vV-cY5">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.064571496212121215" green="0.064571496212121215" blue="0.064571496212121215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
