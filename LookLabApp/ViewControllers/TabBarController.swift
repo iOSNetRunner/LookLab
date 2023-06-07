@@ -10,7 +10,6 @@ import UIKit
 final class TabBarController: UITabBarController {
     
     var masters = Master.getMasters() // aka MastersDB
-    
     var appointments: [Appointment] = []
 
     override func viewDidLoad() {
@@ -133,31 +132,28 @@ extension TabBarController: ConfirmationViewControllerDelegate {
     
 }
 
-
-
-
 extension TabBarController: UITabBarControllerDelegate {
-    
+
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MyTransition(viewControllers: tabBarController.viewControllers)
+        return TabBarTransition(viewControllers: tabBarController.viewControllers)
     }
 }
 
-final class MyTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    
+final class TabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
+
     let viewControllers: [UIViewController]?
     let transitionDuration: Double = 0.3
-    
+
     init(viewControllers: [UIViewController]?) {
         self.viewControllers = viewControllers
     }
-    
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return TimeInterval(transitionDuration)
     }
-    
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        
+
         guard
             let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let fromView = fromVC.view,
@@ -169,14 +165,14 @@ final class MyTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(false)
                 return
         }
-        
+
         let frame = transitionContext.initialFrame(for: fromVC)
         var fromFrameEnd = frame
         var toFrameStart = frame
         fromFrameEnd.origin.x = toIndex > fromIndex ? frame.origin.x - frame.width : frame.origin.x + frame.width
         toFrameStart.origin.x = toIndex > fromIndex ? frame.origin.x + frame.width : frame.origin.x - frame.width
         toView.frame = toFrameStart
-        
+
         DispatchQueue.main.async {
             transitionContext.containerView.addSubview(toView)
             UIView.animate(withDuration: self.transitionDuration, animations: {
@@ -188,7 +184,7 @@ final class MyTransition: NSObject, UIViewControllerAnimatedTransitioning {
             })
         }
     }
-    
+
     func getIndex(forViewController vc: UIViewController) -> Int? {
         guard let vcs = self.viewControllers else { return nil }
         for (index, thisVC) in vcs.enumerated() {
