@@ -53,27 +53,29 @@ extension TabBarController: AccountViewControllerDelegate {
         appointments.forEach { print($0.master.fullName, $0.dateAndHour.date, $0.dateAndHour.hour, separator: " ") }
         
         appointments.remove(at: appointmentIndex)
-        print("new appointments:")
         
+        print("new appointments:")
         appointments.forEach { print($0.master.fullName, $0.dateAndHour.date, $0.dateAndHour.hour, separator: " ") }
 
     }
     
     func addSesionOptionFor(_ master: Master, on date: String, at hour: String) {
         if masters.contains(where: { $0.fullName == master.fullName }) {
-            guard let masterIndexInMastersDB = masters.firstIndex(where: { $0.fullName == master.fullName }) else { return }
+            guard let masterIndexInMastersDB = masters
+                .firstIndex(where: { $0.fullName == master.fullName }) else { return }
             print("Master: \(master.fullName) found in DB. Index in masters: \(masterIndexInMastersDB)")
                         
             if masters[masterIndexInMastersDB].sessionOptions.contains(where: { $0.date == date }) {
-                guard let dateIndex = masters[masterIndexInMastersDB].sessionOptions.firstIndex(where: { $0.date == date }) else { return }
+                guard let dateIndex = masters[masterIndexInMastersDB].sessionOptions
+                    .firstIndex(where: { $0.date == date }) else { return }
                 print("dateIndex: \(dateIndex)")
                 
                 masters[masterIndexInMastersDB].sessionOptions[dateIndex].hours.append(hour)
                 masters[masterIndexInMastersDB].sessionOptions[dateIndex].hours.sort()
-                masters[masterIndexInMastersDB].sessionOptions.sort { $0.date < $1.date }
                 print("Added option at \(hour) on \(date)")
             } else {
                 masters[masterIndexInMastersDB].sessionOptions.append((date, [hour]))
+                masters[masterIndexInMastersDB].sessionOptions.sort { $0.date < $1.date }
                 print("Created session option on \(date) at \(hour)")
             }
         } else {
@@ -86,10 +88,10 @@ extension TabBarController: AccountViewControllerDelegate {
                                    sessionOptions: [(date: date, hours: [hour])])
 
             masters.append(newMaster)
-            guard let masterIndexInMastersDB = masters.firstIndex(where: { $0.fullName == master.fullName }) else { return }
+            guard let masterIndexInMastersDB = masters
+                .firstIndex(where: { $0.fullName == master.fullName }) else { return }
             print("\(newMaster.fullName) was not found in mastersDB. Now added with index in master DB: \(masterIndexInMastersDB)")
         }
-        
     }
 }
 

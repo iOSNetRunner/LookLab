@@ -24,8 +24,8 @@ struct Master {
         let mastersExpertises = DataStore.shared.mastersExpertises.shuffled()
         var mastersImagesNames = DataStore.shared.mastersImagesNames.shuffled()
         var mastersPhones = DataStore.shared.mastersPhones.shuffled()
-        let mastersWorkingDates = DataStore.shared.mastersWorkingDates.shuffled()
-        let masterWorkingHours = DataStore.shared.mastersWorkingHours.shuffled()
+        let mastersWorkingDates = DataStore.shared.mastersWorkingDates
+        let masterWorkingHours = DataStore.shared.mastersWorkingHours
         
         for masterName in mastersNames {
             let masterName = masterName
@@ -59,9 +59,9 @@ struct Master {
             
             var sessionOptions: [(date: String, hours: [String])] = []
             
-            var particularWorkingDates = mastersWorkingDates
+            var particularWorkingDates = mastersWorkingDates.shuffled()
             
-            var particularWorkingHours = masterWorkingHours
+            var particularWorkingHours = masterWorkingHours.shuffled()
             
             for _ in 1...3 {
                 
