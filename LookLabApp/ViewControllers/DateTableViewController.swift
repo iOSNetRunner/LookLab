@@ -17,6 +17,7 @@ final class DateTableViewController: UITableViewController {
         tableView.backgroundColor = .clear
         view.backgroundColor = .systemBrown
         view.setGradientBackground()
+        navigationController?.navigationBar.barTintColor = .systemBrown
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

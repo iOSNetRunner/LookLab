@@ -27,8 +27,8 @@ final class MasterListViewController: UITableViewController {
         let master = masters[indexPath.section]
         var content = cell.defaultContentConfiguration()
         
-        content.text = master.fullName
-        content.secondaryText = master.typeOfMaster
+        content.text = master.typeOfMaster
+        content.secondaryText = master.experience
         content.image = UIImage(named: masters[indexPath.section].masterImageName)
         content.imageProperties.cornerRadius = tableView.rowHeight / 2
         cell.backgroundColor = .clear
