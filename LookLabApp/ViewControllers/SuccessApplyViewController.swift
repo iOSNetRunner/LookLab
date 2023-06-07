@@ -20,10 +20,9 @@ final class SuccessApplyViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        UIView.animate(withDuration: 0.8) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIView.animate(withDuration: 1) {
             self.successIcon.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
         }
     }

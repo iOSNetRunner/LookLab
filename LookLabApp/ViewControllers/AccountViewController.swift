@@ -71,6 +71,8 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
             
             let appointmentLine = "\(service.uppercased()) scheduled on: \n\(date) at \(hour) \nMaster: \(masterName.uppercased()) \nPrice: \(price)"
             content.text = appointmentLine
+            content.secondaryText = "Tap to remove this reservation"
+            content.secondaryTextProperties.color = .systemRed
             cell.contentConfiguration = content
             
             return cell
