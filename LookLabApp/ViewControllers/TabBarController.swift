@@ -10,10 +10,10 @@ import UIKit
 final class TabBarController: UITabBarController {
     
     //MARK: - Private properties
-    var masters = Master.getMasters() // aka MastersDB
+    var masters = Master.getMasters()
     var appointments: [Appointment] = []
 
-    // MARK: - View life Cycles
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         transferData()

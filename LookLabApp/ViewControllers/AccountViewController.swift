@@ -10,7 +10,6 @@ import UIKit
 final class AccountViewController: UIViewController {
 
     //MARK: - IBOutlets
-
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
@@ -20,7 +19,7 @@ final class AccountViewController: UIViewController {
     
     unowned var delegate: AccountViewControllerDelegate!
     
-    // MARK: - View life Cycles
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -9,7 +9,7 @@ import UIKit
 
 final class AboutUsViewController: UIViewController {
     
-    //MARK: - View life Cycles
+    //MARK: - IBOutlets
     @IBOutlet var gearImage: UIImageView!
     
     @IBOutlet var devOne: UILabel!

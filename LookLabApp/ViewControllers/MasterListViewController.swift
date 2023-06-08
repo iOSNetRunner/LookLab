@@ -32,11 +32,11 @@ final class MasterListViewController: UITableViewController {
         content.text = master[indexPath.row].fullName
         switch master[indexPath.row].experience {
         case "Trainee":
-            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️"
+            content.secondaryText = "\(master[indexPath.row].experience)\n⭐️⭐️⭐️"
         case "Master":
-            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️⭐️"
+            content.secondaryText = "\(master[indexPath.row].experience)\n⭐️⭐️⭐️⭐️"
         default:
-            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️⭐️⭐️"
+            content.secondaryText = "\(master[indexPath.row].experience)\n⭐️⭐️⭐️⭐️⭐️"
         }
         
         content.image = UIImage(named: master[indexPath.row].masterImageName)
@@ -49,6 +49,7 @@ final class MasterListViewController: UITableViewController {
         
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let contentView = UIView()
@@ -120,7 +121,7 @@ final class MasterListViewController: UITableViewController {
         tabBarController?.tabBar.scrollEdgeAppearance = tabBarController?.tabBar.standardAppearance
     }
     
-   // MARK: - Privat func
+   // MARK: - Private func
     private func numbersOfTypeMaster(section: Int ) -> Int {
         var number = 0
         for master in masters {
@@ -136,6 +137,7 @@ final class MasterListViewController: UITableViewController {
         }
         return number
     }
+    
     private func filterMasterOfType(masters: [Master], section: Int) -> [Master] {
         var filterMaster: [Master] = []
         for master in masters {
