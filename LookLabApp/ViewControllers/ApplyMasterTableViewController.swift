@@ -14,6 +14,7 @@ final class ApplyMasterTableViewController: UITableViewController {
     //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 60
         tableView.backgroundColor = .clear
         view.backgroundColor = .systemBrown
         view.setGradientBackground()
@@ -29,6 +30,14 @@ final class ApplyMasterTableViewController: UITableViewController {
         
         var content = cell.defaultContentConfiguration()
         content.text = masters[indexPath.row].fullName
+        //content.text = typesOfServices[indexPath.row]
+        if masters[indexPath.row].typeOfMaster == "Nail Service" {
+            content.image = UIImage(named: "nailService")
+        } else if masters[indexPath.row].typeOfMaster == "Shaving" {
+            content.image = UIImage(named: "shave")
+        } else if masters[indexPath.row].typeOfMaster == "Hair Styling" {
+            content.image = UIImage(named: "hairStyle")
+        }
         cell.contentConfiguration = content
         
         return cell
