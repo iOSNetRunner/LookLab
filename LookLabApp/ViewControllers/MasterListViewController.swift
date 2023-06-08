@@ -16,30 +16,30 @@ final class MasterListViewController: UITableViewController {
     
     //MARK: - Table View Data Source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        masters.count
+        3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        numbersOfTypeMaster(section: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "masterNameCell", for: indexPath)
-        let master = masters[indexPath.section]
         var content = cell.defaultContentConfiguration()
         
-        content.text = master.fullName
+        let master = filterMasterOfType(masters: masters, section: indexPath.section)
         
-        switch master.experience {
+        content.text = master[indexPath.row].fullName
+        switch master[indexPath.row].experience {
         case "Trainee":
-            content.secondaryText = "\(master.typeOfMaster)\n⭐️⭐️⭐️"
+            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️"
         case "Master":
-            content.secondaryText = "\(master.typeOfMaster)\n⭐️⭐️⭐️⭐️"
+            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️⭐️"
         default:
-            content.secondaryText = "\(master.typeOfMaster)\n⭐️⭐️⭐️⭐️⭐️"
+            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️⭐️⭐️"
         }
         
-        content.image = UIImage(named: masters[indexPath.section].masterImageName)
+        content.image = UIImage(named: master[indexPath.row].masterImageName)
         content.imageProperties.cornerRadius = tableView.rowHeight / 2
         cell.backgroundColor = .clear
         content.textProperties.color = .lightGray
@@ -49,12 +49,49 @@ final class MasterListViewController: UITableViewController {
         
         return cell
     }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let contentView = UIView()
+        contentView.backgroundColor = .systemBrown.withAlphaComponent(0.7)
+        
+        let tableFullname = UILabel(
+            frame: CGRect(
+                x: 16,
+                y: 3,
+                width: tableView.frame.width,
+                height: 20
+            )
+        )
+        
+        switch section {
+        case 0: tableFullname.text = "Hair Styling"
+            
+        case 1: tableFullname.text = "Shaving"
+        default :  tableFullname.text = "Nail Service"
+        }
+       
+        tableFullname.font = UIFont.boldSystemFont(ofSize: 17)
+        tableFullname.textColor = .white
+        contentView.addSubview(tableFullname)
+        
+        return contentView
+    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let index = tableView.indexPathForSelectedRow else {return}
         guard let selectMasterVC = segue.destination as? SelectedMasterViewController else {return}
-        selectMasterVC.master = masters[index.section]
+        switch index.section {
+        case 0:
+            let master = filterMasterOfType(masters: masters, section: 0)
+            selectMasterVC.master = master[index.row]
+        case 1:
+            let master = filterMasterOfType(masters: masters, section: 1)
+            selectMasterVC.master = master[index.row]
+        default:
+            let master = filterMasterOfType(masters: masters, section: 2)
+            selectMasterVC.master = master[index.row]
+        }
     }
     
     //MARK: - Background & Bar Settings
@@ -81,5 +118,38 @@ final class MasterListViewController: UITableViewController {
         
         tabBarController?.tabBar.standardAppearance = appearance
         tabBarController?.tabBar.scrollEdgeAppearance = tabBarController?.tabBar.standardAppearance
+    }
+    
+   // MARK: - Privat func
+    private func numbersOfTypeMaster(section: Int ) -> Int {
+        var number = 0
+        for master in masters {
+            if master.typeOfMaster == "Hair Styling" && section == 0 {
+               number += 1
+            }
+            if master.typeOfMaster == "Shaving" && section == 1 {
+               number += 1
+            }
+            if master.typeOfMaster == "Nail Service" && section == 2 {
+                number += 1
+            }
+        }
+        return number
+    }
+    private func filterMasterOfType(masters: [Master], section: Int) -> [Master] {
+        var filterMaster: [Master] = []
+        for master in masters {
+            if master.typeOfMaster == "Hair Styling" && section == 0 {
+                filterMaster.append(master)
+            }
+            if master.typeOfMaster == "Shaving" && section == 1 {
+                filterMaster.append(master)
+            }
+            if master.typeOfMaster == "Nail Service" && section == 2 {
+                filterMaster.append(master)
+            }
+            
+        }
+        return filterMaster
     }
 }
