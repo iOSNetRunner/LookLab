@@ -13,7 +13,7 @@ final class ApplyForServiceTableViewController: UITableViewController {
     var masters: [Master]!
     let typesOfServices = DataStore.shared.typeOfMaster
     
-    // MARK: - View life Cycles
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 60

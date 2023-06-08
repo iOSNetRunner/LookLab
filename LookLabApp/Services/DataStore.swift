@@ -8,10 +8,8 @@
 import Foundation
 
 final class DataStore {
-    
     static let shared = DataStore()
     
-    // users
     let personsNames = [
         "Dmitrii",
         "Egor",
@@ -52,7 +50,6 @@ final class DataStore {
         "123"
     ]
     
-    // masters
     let mastersNames = [
         "Keven Reddick",
         "Matthias Warden",
