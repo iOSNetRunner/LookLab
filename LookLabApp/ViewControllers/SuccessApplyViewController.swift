@@ -27,8 +27,12 @@ final class SuccessApplyViewController: UIViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.popToRootViewController(animated: false)
+    }
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        navigationController?.popToRootViewController(animated: false)
+        
     }
 }
