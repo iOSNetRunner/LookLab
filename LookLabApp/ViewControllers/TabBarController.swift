@@ -9,15 +9,18 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
+    //MARK: - Private properties
     var masters = Master.getMasters() // aka MastersDB
     var appointments: [Appointment] = []
 
+    // MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         transferData()
         delegate = self
     }
-        
+    
+    //MARK: - Private Methods
     private func transferData() {
         guard let viewControllers else { return }
         
@@ -33,6 +36,7 @@ final class TabBarController: UITabBarController {
     }
 }
 
+//MARK: - Protocols
 protocol ConfirmationViewControllerDelegate: AnyObject {
     func addAppointmetToAppointments(_ appointment: Appointment)
     func removeSesionOptionFrom(_ master: Master, on date: String, at hour: String)
@@ -43,38 +47,30 @@ protocol AccountViewControllerDelegate: AnyObject {
     func addSesionOptionFor(_ master: Master, on date: String, at hour: String)
 }
 
+//MARK: - AccountViewControllerDelegate
 extension TabBarController: AccountViewControllerDelegate {
     func removeAppointmetFromAppointments(_ appointment: Appointment) {
         guard let appointmentIndex = appointments.firstIndex(where: {
             $0.master.fullName == appointment.master.fullName
             && $0.dateAndHour == appointment.dateAndHour}) else { return }
         
-        print("old appointments:")
-        appointments.forEach { print($0.master.fullName, $0.dateAndHour.date, $0.dateAndHour.hour, separator: " ") }
-        
         appointments.remove(at: appointmentIndex)
-        print("new appointments:")
-        
-        appointments.forEach { print($0.master.fullName, $0.dateAndHour.date, $0.dateAndHour.hour, separator: " ") }
-
-    }
+        }
     
     func addSesionOptionFor(_ master: Master, on date: String, at hour: String) {
         if masters.contains(where: { $0.fullName == master.fullName }) {
-            guard let masterIndexInMastersDB = masters.firstIndex(where: { $0.fullName == master.fullName }) else { return }
-            print("Master: \(master.fullName) found in DB. Index in masters: \(masterIndexInMastersDB)")
+            guard let masterIndexInMastersDB = masters
+                .firstIndex(where: { $0.fullName == master.fullName }) else { return }
                         
             if masters[masterIndexInMastersDB].sessionOptions.contains(where: { $0.date == date }) {
-                guard let dateIndex = masters[masterIndexInMastersDB].sessionOptions.firstIndex(where: { $0.date == date }) else { return }
-                print("dateIndex: \(dateIndex)")
+                guard let dateIndex = masters[masterIndexInMastersDB].sessionOptions
+                    .firstIndex(where: { $0.date == date }) else { return }
                 
                 masters[masterIndexInMastersDB].sessionOptions[dateIndex].hours.append(hour)
                 masters[masterIndexInMastersDB].sessionOptions[dateIndex].hours.sort()
-                masters[masterIndexInMastersDB].sessionOptions.sort { $0.date < $1.date }
-                print("Added option at \(hour) on \(date)")
             } else {
                 masters[masterIndexInMastersDB].sessionOptions.append((date, [hour]))
-                print("Created session option on \(date) at \(hour)")
+                masters[masterIndexInMastersDB].sessionOptions.sort { $0.date < $1.date }
             }
         } else {
             let newMaster = Master(fullName: master.fullName,
@@ -86,13 +82,11 @@ extension TabBarController: AccountViewControllerDelegate {
                                    sessionOptions: [(date: date, hours: [hour])])
 
             masters.append(newMaster)
-            guard let masterIndexInMastersDB = masters.firstIndex(where: { $0.fullName == master.fullName }) else { return }
-            print("\(newMaster.fullName) was not found in mastersDB. Now added with index in master DB: \(masterIndexInMastersDB)")
         }
-        
     }
 }
 
+//MARK: - ConfirmationViewControllerDelegate
 extension TabBarController: ConfirmationViewControllerDelegate {
     func addAppointmetToAppointments(_ appointment: Appointment) {
         appointments.append(appointment)
@@ -101,28 +95,16 @@ extension TabBarController: ConfirmationViewControllerDelegate {
     func removeSesionOptionFrom(_ master: Master, on date: String, at hour: String) {
         let sessionOptions = master.sessionOptions
         
-        guard let masterIndexInMastersDB = masters.firstIndex(where: { $0.fullName == master.fullName }) else { return }
-        print("masterIndex: \(masterIndexInMastersDB)")
+        guard
+            let masterIndexInMastersDB = masters.firstIndex(where: { $0.fullName == master.fullName }),
+            let dateIndex = sessionOptions.firstIndex(where: { $0.date == date }),
+            let hourIndex = sessionOptions[dateIndex].hours.firstIndex(of: hour)
+        else { return }
         
-        guard let dateIndex = sessionOptions.firstIndex(where: { $0.date == date }) else { return }
-        print("dateIndex: \(dateIndex)")
-        
-        guard let hourIndex = sessionOptions[dateIndex].hours.firstIndex(of: hour) else { return }
-        print("hourIndex: \(hourIndex)")
-        
-        let checkBeforeRemove = masters[masterIndexInMastersDB].sessionOptions[dateIndex].hours
-        print("\(masters[masterIndexInMastersDB].fullName) old options for \(date): \(checkBeforeRemove)")
-        
-        // removing hour from hours
         masters[masterIndexInMastersDB].sessionOptions[dateIndex].hours.remove(at: hourIndex)
-        print("Master's session option for \(date) at \(hour) removed")
-        
-        let checkAfterRemove = masters[masterIndexInMastersDB].sessionOptions[dateIndex].hours
-        print("\(masters[masterIndexInMastersDB].fullName) new options for \(date): \(checkAfterRemove)\n")
         
         if masters[masterIndexInMastersDB].sessionOptions[dateIndex].hours.isEmpty {
             masters[masterIndexInMastersDB].sessionOptions.remove(at: dateIndex)
-            print("No options left for \(date)\n")
         }
         
         if masters[masterIndexInMastersDB].sessionOptions.isEmpty {
@@ -132,6 +114,7 @@ extension TabBarController: ConfirmationViewControllerDelegate {
     
 }
 
+//MARK: - UITabBarControllerDelegate
 extension TabBarController: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -139,6 +122,7 @@ extension TabBarController: UITabBarControllerDelegate {
     }
 }
 
+//MARK: - TabBarTransition
 final class TabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
     let viewControllers: [UIViewController]?

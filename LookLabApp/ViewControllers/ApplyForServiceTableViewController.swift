@@ -9,9 +9,11 @@ import UIKit
 
 final class ApplyForServiceTableViewController: UITableViewController {
     
+    //MARK: - Private properties
     var masters: [Master]!
     let typesOfServices = DataStore.shared.typeOfMaster
     
+    // MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .clear
@@ -23,6 +25,7 @@ final class ApplyForServiceTableViewController: UITableViewController {
         updateMasters()
     }
     
+    //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         typesOfServices.count
     }
@@ -37,6 +40,11 @@ final class ApplyForServiceTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let masterSelectionVC = segue.destination as? ApplyMasterTableViewController else { return }
         guard let index = tableView.indexPathForSelectedRow else { return }
@@ -44,11 +52,8 @@ final class ApplyForServiceTableViewController: UITableViewController {
         let filteredMasters = masters.filter { $0.typeOfMaster == typesOfServices[index.row] }
         masterSelectionVC.masters = filteredMasters
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
+
+    //MARK: - Private methods
     private func updateMasters() {
         guard let tabBarController = tabBarController as? TabBarController else { return }
         masters = tabBarController.masters

@@ -9,14 +9,18 @@ import UIKit
 
 final class AccountViewController: UIViewController {
 
+    //MARK: - IBOutlets
+
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
+    //MARK: - Private properties
     var username: String!
     private var appointments: [Appointment] = []
     
     unowned var delegate: AccountViewControllerDelegate!
     
+    // MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,17 +37,19 @@ final class AccountViewController: UIViewController {
         updateAppointments()
     }
     
+    //MARK: - Navigation
+    @IBAction func unwindSuccess(segue: UIStoryboardSegue) {
+    }
+    
+    //MARK: - Private Methods
     private func updateAppointments() {
         guard let tabBarController = tabBarController as? TabBarController else { return }
         appointments = tabBarController.appointments
         tableView.reloadData()
     }
-    
-    @IBAction func unwindSuccess(segue: UIStoryboardSegue) {
-    }
-    
 }
 
+//MARK: - Table View Data Source
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         appointments.isEmpty ? 1 : appointments.count

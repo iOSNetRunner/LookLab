@@ -9,11 +9,14 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
+    //MARK: - IBOutlets
     @IBOutlet var usernameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    //MARK: - Private properties
     var users: [User]!
     
+    // MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -30,11 +33,13 @@ final class LoginViewController: UIViewController {
         }
     }
     
+    //MARK: - Override Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
     
+    //MARK: - IBActions
     @IBAction func loginButtonTapped() {
         guard usernameTF.text != "", passwordTF.text != "" else {
                 showAlert(withTitle: "OOPS!", andMessage: "Fields can't be empty!")
@@ -60,6 +65,7 @@ final class LoginViewController: UIViewController {
         passwordTF.text = ""
     }
     
+    //MARK: - Private Methods
     private func checkUsername(from input: String) -> String {
         var usernames: [String] = []
         var checkedUsername = ""

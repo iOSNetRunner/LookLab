@@ -9,6 +9,7 @@ import UIKit
 
 final class AboutUsViewController: UIViewController {
     
+    //MARK: - View life Cycles
     @IBOutlet var gearImage: UIImageView!
     
     @IBOutlet var devOne: UILabel!
@@ -16,8 +17,10 @@ final class AboutUsViewController: UIViewController {
     @IBOutlet var devThree: UILabel!
     @IBOutlet var devFour: UILabel!
     
+    //MARK: - Private properties
     var developers: [User]!
     
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -29,6 +32,7 @@ final class AboutUsViewController: UIViewController {
         makeAnimation()
     }
     
+    //MARK: - Private methods
     private func setupDevelopers() {
         for developer in developers {
             switch developer.personName {

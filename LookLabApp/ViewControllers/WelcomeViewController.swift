@@ -9,12 +9,15 @@ import UIKit
 
 final class WelcomeViewController: UIViewController {
     
+    //MARK: - IBOtlets
     @IBOutlet var mainLogo: UIImageView!
     @IBOutlet var companyNameLabel: UILabel!
     @IBOutlet var enterButton: UIButton!
     
+    //MARK: - Private properties
     private let users = User.getUsers()
 
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -34,6 +37,7 @@ final class WelcomeViewController: UIViewController {
         }
     }
     
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let aboutVC = segue.destination as? AboutUsViewController {

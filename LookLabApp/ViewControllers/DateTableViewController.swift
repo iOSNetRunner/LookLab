@@ -9,16 +9,20 @@ import UIKit
 
 final class DateTableViewController: UITableViewController {
     
+    //MARK: - Private properties
     var master: Master!
     
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.backgroundColor = .clear
         view.backgroundColor = .systemBrown
         view.setGradientBackground()
+        navigationController?.navigationBar.barTintColor = .systemBrown
     }
     
+    //MARK: - Table View Data Source
     override func numberOfSections(in tableView: UITableView) -> Int {
         master.sessionOptions.count
     }
@@ -55,6 +59,7 @@ final class DateTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let checkDetailsVC = segue.destination as? ConfirmationViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }

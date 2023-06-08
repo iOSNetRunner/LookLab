@@ -8,6 +8,10 @@ import UIKit
 
 final class ApplyMasterTableViewController: UITableViewController {
     
+    //MARK: - Private properties
+    var masters: [Master]!
+    
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .clear
@@ -15,8 +19,7 @@ final class ApplyMasterTableViewController: UITableViewController {
         view.setGradientBackground()
     }
     
-    var masters: [Master]!
-    
+    //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         masters.count
     }
@@ -31,6 +34,7 @@ final class ApplyMasterTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let dateAndTimeSelectionVC = segue.destination as? DateTableViewController else { return }
         guard let index = tableView.indexPathForSelectedRow else { return }
