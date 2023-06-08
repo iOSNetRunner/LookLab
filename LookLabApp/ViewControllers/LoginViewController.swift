@@ -13,7 +13,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet var usernameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var users: [User]!
     
     // MARK: - View life Cycles

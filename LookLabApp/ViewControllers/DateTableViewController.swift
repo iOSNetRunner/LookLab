@@ -9,7 +9,7 @@ import UIKit
 
 final class DateTableViewController: UITableViewController {
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var master: Master!
     
     //MARK: - View life Cycles

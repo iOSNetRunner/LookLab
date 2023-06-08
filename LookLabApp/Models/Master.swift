@@ -5,8 +5,6 @@
 //  Created by Egor Kruglov on 03.06.2023.
 //
 
-import Foundation
-
 struct Master {
     let fullName: String
     let typeOfMaster: String

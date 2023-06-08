@@ -5,8 +5,6 @@
 //  Created by Dmitrii Galatskii on 02.06.2023.
 //
 
-import Foundation
-
 final class DataStore {
     static let shared = DataStore()
     
@@ -35,11 +33,11 @@ final class DataStore {
     ]
     
     let usernames = [
+        "User",
         "iOSNetRunner",
         "yegorkruglov",
         "aviation_club",
-        "romazan126",
-        "123"
+        "romazan126"
     ]
     
     let passwords = [
@@ -106,16 +104,16 @@ final class DataStore {
     ]
     
     let mastersPhones = [
-        "+7 123 456 78 11",
-        "+7 123 456 78 22",
-        "+7 123 456 78 33",
-        "+7 123 456 78 44",
-        "+7 123 456 78 55",
-        "+7 123 456 78 66",
-        "+7 123 456 78 77",
-        "+7 123 456 78 88",
-        "+7 123 456 78 99",
-        "+7 123 456 78 00"
+        "+7 314 293 51 11",
+        "+7 958 300 62 22",
+        "+7 134 400 13 33",
+        "+7 837 599 78 44",
+        "+7 123 477 72 55",
+        "+7 191 976 79 66",
+        "+7 300 390 99 77",
+        "+7 989 104 01 88",
+        "+7 912 606 20 99",
+        "+7 988 453 31 00"
     ]
     
     let mastersImagesNames = [

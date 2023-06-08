@@ -5,8 +5,6 @@
 //  Created by Dmitrii Galatskii on 02.06.2023.
 //
 
-import Foundation
-
 struct User {
     let personName: String
     let personSurname: String
@@ -44,7 +42,4 @@ struct User {
         
         return users
     }
-    
 }
-
-

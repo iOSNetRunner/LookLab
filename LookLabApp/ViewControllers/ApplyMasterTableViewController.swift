@@ -8,7 +8,7 @@ import UIKit
 
 final class ApplyMasterTableViewController: UITableViewController {
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var masters: [Master]!
     
     //MARK: - View life Cycles
@@ -31,7 +31,7 @@ final class ApplyMasterTableViewController: UITableViewController {
         
         var content = cell.defaultContentConfiguration()
         content.text = masters[indexPath.row].fullName
-        //content.text = typesOfServices[indexPath.row]
+        
         if masters[indexPath.row].typeOfMaster == "Nail Service" {
             content.image = UIImage(named: "nailService")
         } else if masters[indexPath.row].typeOfMaster == "Shaving" {

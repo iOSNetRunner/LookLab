@@ -2,7 +2,7 @@ import UIKit
 
 final class MasterListViewController: UITableViewController {
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var masters: [Master]!
     
     //MARK: - View life Cycles
@@ -96,7 +96,7 @@ final class MasterListViewController: UITableViewController {
         }
     }
     
-   // MARK: - Private func
+   // MARK: - Private methods
     private func numbersOfTypeMaster(section: Int ) -> Int {
         var number = 0
         for master in masters {
