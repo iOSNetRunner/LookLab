@@ -12,6 +12,7 @@ final class MasterListViewController: UITableViewController {
         enableBarSettings()
         setTablewViewBackgroundToGradient()
         tableView.rowHeight = 100
+        tableView.sectionHeaderHeight = 36
     }
     
     //MARK: - Table View Data Source
@@ -57,16 +58,16 @@ final class MasterListViewController: UITableViewController {
         let tableFullname = UILabel(
             frame: CGRect(
                 x: 60,
-                y: 3,
+                y: 6,
                 width: 130,
                 height: 20
             )
         )
         let tableIcon = UIImageView(frame: CGRect(
             x: 16,
-            y: 0,
+            y: 3,
             width: 30,
-            height: 20))
+            height: 30))
         
         
         switch section {
@@ -81,10 +82,8 @@ final class MasterListViewController: UITableViewController {
                 tableIcon.image = UIImage(named:"hairStyle")
         }
        
-        
         tableFullname.font = UIFont.boldSystemFont(ofSize: 20)
-        tableFullname.textColor = .white
-        
+        tableFullname.textColor = .black
         contentView.addSubview(tableFullname)
         contentView.addSubview(tableIcon)
         
