@@ -20,6 +20,7 @@ final class WelcomeViewController: UIViewController {
     //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.setGradientBackground()
     }
     

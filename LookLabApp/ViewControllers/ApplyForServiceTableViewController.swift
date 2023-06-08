@@ -11,15 +11,17 @@ final class ApplyForServiceTableViewController: UITableViewController {
     
     //MARK: - Private properties
     var masters: [Master]!
-    let typesOfServices = DataStore.shared.typeOfMaster
+    var typesOfServices: [String] = []
     
     //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.rowHeight = 60
-        tableView.backgroundColor = .clear
         view.backgroundColor = .systemBrown
-        view.setGradientBackground()
+        enableBarSettings()
+        setTablewViewBackgroundToGradient()
+        setupTypesOfServices()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,4 +69,7 @@ final class ApplyForServiceTableViewController: UITableViewController {
         masters = tabBarController.masters
     }
     
+    private func setupTypesOfServices() {
+        typesOfServices = Array(Set(masters.map { $0.typeOfMaster }))
+    }
 }
