@@ -9,9 +9,11 @@ import UIKit
 
 final class ApplyForServiceTableViewController: UITableViewController {
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var masters: [Master]!
-    var typesOfServices: [String] = []
+    
+    //MARK: - Private properties
+    private var typesOfServices: [String] = []
     
     //MARK: - View life Cycles
     override func viewDidLoad() {

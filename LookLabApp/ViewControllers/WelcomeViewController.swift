@@ -9,7 +9,7 @@ import UIKit
 
 final class WelcomeViewController: UIViewController {
     
-    //MARK: - IBOtlets
+    //MARK: - IBOutlets
     @IBOutlet var mainLogo: UIImageView!
     @IBOutlet var companyNameLabel: UILabel!
     @IBOutlet var enterButton: UIButton!

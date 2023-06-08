@@ -22,6 +22,7 @@ final class SuccessApplyViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         UIView.animate(withDuration: 1) {
             self.successIcon.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
         }
@@ -29,6 +30,7 @@ final class SuccessApplyViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
         navigationController?.popToRootViewController(animated: false)
     }
 }

@@ -8,7 +8,7 @@ import UIKit
 
 final class ApplyMasterTableViewController: UITableViewController {
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var masters: [Master]!
     
     //MARK: - View life Cycles

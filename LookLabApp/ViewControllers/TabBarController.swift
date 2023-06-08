@@ -9,7 +9,7 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var masters = Master.getMasters()
     var appointments: [Appointment] = []
 

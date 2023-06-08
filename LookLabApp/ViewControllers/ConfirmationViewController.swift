@@ -17,7 +17,7 @@ final class ConfirmationViewController: UIViewController {
     
     @IBOutlet var typeOfMasterLabel: UIImageView!
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var master: Master!
     var date: String!
     var hour: String!

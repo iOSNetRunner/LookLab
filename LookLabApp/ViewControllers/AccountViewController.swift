@@ -13,9 +13,9 @@ final class AccountViewController: UIViewController {
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var username: String!
-    private var appointments: [Appointment] = []
+    var appointments: [Appointment] = []
     
     unowned var delegate: AccountViewControllerDelegate!
     

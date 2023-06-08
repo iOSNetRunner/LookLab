@@ -17,7 +17,7 @@ final class AboutUsViewController: UIViewController {
     @IBOutlet var devThree: UILabel!
     @IBOutlet var devFour: UILabel!
     
-    //MARK: - Private properties
+    //MARK: - Public properties
     var developers: [User]!
     
     //MARK: - View life Cycles
