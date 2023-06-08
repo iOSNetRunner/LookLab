@@ -23,12 +23,14 @@ final class AboutUsViewController: UIViewController {
     //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.setGradientBackground()
         setupDevelopers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         makeAnimation()
     }
     
