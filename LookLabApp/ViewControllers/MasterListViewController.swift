@@ -32,11 +32,11 @@ final class MasterListViewController: UITableViewController {
         content.text = master[indexPath.row].fullName
         switch master[indexPath.row].experience {
         case "Trainee":
-            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️"
+            content.secondaryText = "⭐️⭐️⭐️"
         case "Master":
-            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️⭐️"
+            content.secondaryText = "⭐️⭐️⭐️⭐️"
         default:
-            content.secondaryText = "\(master[indexPath.row].typeOfMaster)\n⭐️⭐️⭐️⭐️⭐️"
+            content.secondaryText = "⭐️⭐️⭐️⭐️⭐️"
         }
         
         content.image = UIImage(named: master[indexPath.row].masterImageName)
@@ -56,23 +56,37 @@ final class MasterListViewController: UITableViewController {
         
         let tableFullname = UILabel(
             frame: CGRect(
-                x: 16,
+                x: 60,
                 y: 3,
-                width: tableView.frame.width,
+                width: 130,
                 height: 20
             )
         )
+        let tableIcon = UIImageView(frame: CGRect(
+            x: 16,
+            y: 0,
+            width: 30,
+            height: 20))
+        
         
         switch section {
-        case 0: tableFullname.text = "Hair Styling"
+        case 0:
+            tableFullname.text = "Hair Styling"
+            tableIcon.image = UIImage(named: "nailService")
             
-        case 1: tableFullname.text = "Shaving"
+        case 1:
+            tableFullname.text = "Shaving"
+            tableIcon.image = UIImage(named: "shave")
         default :  tableFullname.text = "Nail Service"
+                tableIcon.image = UIImage(named:"hairStyle")
         }
        
-        tableFullname.font = UIFont.boldSystemFont(ofSize: 17)
+        
+        tableFullname.font = UIFont.boldSystemFont(ofSize: 20)
         tableFullname.textColor = .white
+        
         contentView.addSubview(tableFullname)
+        contentView.addSubview(tableIcon)
         
         return contentView
     }
