@@ -9,19 +9,28 @@ import UIKit
 
 final class SelectedMasterViewController: UIViewController {
     
-    var master: Master!
-    
+    //MARK: - IBOutlets
     @IBOutlet var imageMasterView: UIImageView!
+    @IBOutlet var applyArrowIcon: UIImageView!
+    
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var contactLabel: UILabel!
     @IBOutlet var experienceLabel: UILabel!
     
+    //MARK: - Public properties
+    var master: Master!
+
+    //MARK: - View life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBrown
         view.setGradientBackground()
-        
         setupInfo()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setAnimationForArrow()
     }
     
     override func viewWillLayoutSubviews() {
@@ -29,11 +38,31 @@ final class SelectedMasterViewController: UIViewController {
         imageMasterView.layer.cornerRadius = imageMasterView.frame.height / 2
     }
     
+    //MARK: - Private methods
     private func setupInfo() {
         title = master.fullName
         imageMasterView.image = UIImage(named: master.masterImageName)
-        priceLabel.text = "Price: \(master.pricePerService)"
-        contactLabel.text = "Contact: \(master.phone)"
-        experienceLabel.text = "Experience: \(master.experience)"
+        priceLabel.text = "\(master.pricePerService) per hour"
+        contactLabel.text = master.phone
+        
+        switch master.experience {
+        case "Trainee":
+            experienceLabel.text = "\(master.typeOfMaster) \(master.experience.uppercased())    ⭐️⭐️⭐️"
+        case "Master":
+            experienceLabel.text = "\(master.typeOfMaster) \(master.experience.uppercased())    ⭐️⭐️⭐️⭐️"
+        default:
+            experienceLabel.text = "\(master.typeOfMaster) \(master.experience.uppercased())    ⭐️⭐️⭐️⭐️⭐️"
+        }
+    }
+    
+    private func setAnimationForArrow() {
+        UIView.animate(withDuration: 2.0,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 0.2,
+                       options: [.repeat, .autoreverse],
+                       animations: {
+            self.applyArrowIcon.frame = CGRect(x: 275, y: 600, width: 100, height: 100)
+        })
     }
 }
