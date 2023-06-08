@@ -15,6 +15,8 @@ final class ConfirmationViewController: UIViewController {
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     
+   // @IBOutlet var labelTypeOfMaster: UIImageView!
+    
     //MARK: - Private properties
     var master: Master!
     var date: String!
@@ -33,6 +35,15 @@ final class ConfirmationViewController: UIViewController {
         masterLabel.text = "Master: \(master.fullName)"
         priceLabel.text = "Price: \(master.pricePerService)"
         timeLabel.text = "Time: \(dateLine)"
+        
+//        switch master.typeOfMaster {
+//        case "Shaving":
+//            labelTypeOfMaster.image = UIImage(named: "shave")
+//        case "Hair Styling":
+//            labelTypeOfMaster.image = UIImage(named: "hairStyle")
+//        default:
+//            labelTypeOfMaster.image = UIImage(named: "nailService")
+//        }
     }
     
     //MARK: - IBActions

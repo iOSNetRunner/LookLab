@@ -16,6 +16,7 @@ final class ApplyForServiceTableViewController: UITableViewController {
     // MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 60
         tableView.backgroundColor = .clear
         view.backgroundColor = .systemBrown
         view.setGradientBackground()
@@ -35,6 +36,13 @@ final class ApplyForServiceTableViewController: UITableViewController {
         
         var content = cell.defaultContentConfiguration()
         content.text = typesOfServices[indexPath.row]
+        if typesOfServices[indexPath.row] == "Nail Service" {
+            content.image = UIImage(named: "nailService")
+        } else if typesOfServices[indexPath.row] == "Shaving" {
+            content.image = UIImage(named: "shave")
+        } else if typesOfServices[indexPath.row] == "Hair Styling" {
+            content.image = UIImage(named: "hairStyle")
+        }
         cell.contentConfiguration = content
         
         return cell
