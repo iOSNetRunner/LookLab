@@ -2,9 +2,10 @@ import UIKit
 
 final class MasterListViewController: UITableViewController {
     
+    //MARK: - Private properties
     var masters: [Master]!
     
-    // MARK: - View life Cycles
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBrown

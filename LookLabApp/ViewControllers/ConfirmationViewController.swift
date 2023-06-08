@@ -9,17 +9,20 @@ import UIKit
 
 final class ConfirmationViewController: UIViewController {
     
+    //MARK: - IBOutlets
     @IBOutlet var serviceLabel: UILabel!
     @IBOutlet var masterLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     
+    //MARK: - Private properties
     var master: Master!
     var date: String!
     var hour: String!
     
     unowned var delegate: ConfirmationViewControllerDelegate!
     
+    //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground()
@@ -32,6 +35,7 @@ final class ConfirmationViewController: UIViewController {
         timeLabel.text = "Time: \(dateLine)"
     }
     
+    //MARK: - IBActions
     @IBAction func confirmButtonPressed() {
         guard let tabBarController = tabBarController as? TabBarController else { return }
         
