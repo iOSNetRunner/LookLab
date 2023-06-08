@@ -4,7 +4,7 @@ final class MasterListViewController: UITableViewController {
     
     var masters: [Master]!
     
-    // MARK: - View Life Cycles
+    // MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBrown
@@ -28,7 +28,16 @@ final class MasterListViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         
         content.text = master.fullName
-        content.secondaryText = master.typeOfMaster
+        
+        switch master.experience {
+        case "Trainee":
+            content.secondaryText = "\(master.typeOfMaster)\n⭐️⭐️⭐️"
+        case "Master":
+            content.secondaryText = "\(master.typeOfMaster)\n⭐️⭐️⭐️⭐️"
+        default:
+            content.secondaryText = "\(master.typeOfMaster)\n⭐️⭐️⭐️⭐️⭐️"
+        }
+        
         content.image = UIImage(named: masters[indexPath.section].masterImageName)
         content.imageProperties.cornerRadius = tableView.rowHeight / 2
         cell.backgroundColor = .clear
@@ -38,28 +47,6 @@ final class MasterListViewController: UITableViewController {
         cell.contentConfiguration = content
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let contentView = UIView()
-        contentView.backgroundColor = .systemBrown.withAlphaComponent(0.7)
-        
-        let tableFullname = UILabel(
-            frame: CGRect(
-                x: 16,
-                y: 3,
-                width: tableView.frame.width,
-                height: 20
-            )
-        )
-        
-        tableFullname.text = masters[section].fullName
-        tableFullname.font = UIFont.boldSystemFont(ofSize: 17)
-        tableFullname.textColor = .white
-        contentView.addSubview(tableFullname)
-        
-        return contentView
     }
     
     //MARK: - Navigation

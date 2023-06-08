@@ -73,7 +73,19 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
             content.text = appointmentLine
             content.secondaryText = "Tap to remove this reservation"
             content.secondaryTextProperties.color = .systemRed
+            content.imageProperties.maximumSize = CGSize(width: 40, height: 40)
+            
+            switch service {
+            case "Shaving":
+                content.image = UIImage(named: "shave")
+            case "Hair Styling":
+                content.image = UIImage(named: "hairStyle")
+            default:
+                content.image = UIImage(named: "nailService")
+            }
+            
             cell.contentConfiguration = content
+            
             
             return cell
         }
