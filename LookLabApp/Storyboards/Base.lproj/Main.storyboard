@@ -17,16 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9R-xP-Cwy">
-                                <rect key="frame" x="114" y="783" width="166" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9R-xP-Cwy">
+                                <rect key="frame" x="16" y="763" width="361" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="development team"/>
                                 <connections>
                                     <segue destination="fit-H9-uj6" kind="presentation" identifier="openDevelopers" modalPresentationStyle="fullScreen" id="ffa-0B-Bis"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOOK LAB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P39-74-wXG">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOOK LAB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P39-74-wXG">
                                 <rect key="frame" x="40" y="402" width="313" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <nil key="textColor"/>
@@ -42,7 +41,7 @@
                                     <segue destination="rhx-2a-oqT" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Kbh-1q-iWJ"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" image="shareplay" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Aug-QF-it3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleAspectFit" image="shareplay" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Aug-QF-it3">
                                 <rect key="frame" x="9" y="98.666666666666686" width="375" height="371"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -55,10 +54,13 @@
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
                             <constraint firstItem="Aug-QF-it3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1:1.5" id="1N4-wa-dxd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A9R-xP-Cwy" secondAttribute="trailing" constant="16" id="AZV-f0-4Qw"/>
                             <constraint firstItem="P39-74-wXG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="DQ0-0x-zky"/>
                             <constraint firstItem="P39-74-wXG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HAe-WS-aqg"/>
                             <constraint firstItem="xPc-X1-QVn" firstAttribute="top" secondItem="P39-74-wXG" secondAttribute="bottom" constant="70" id="JJT-1d-ILF"/>
+                            <constraint firstItem="A9R-xP-Cwy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KaT-cA-Vgd"/>
                             <constraint firstItem="Aug-QF-it3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PPv-vd-UGP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="A9R-xP-Cwy" secondAttribute="bottom" constant="20" id="bc9-UD-URF"/>
                             <constraint firstItem="xPc-X1-QVn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mXK-D5-fGb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P39-74-wXG" secondAttribute="trailing" constant="40" id="rB8-Du-WQt"/>
                         </constraints>

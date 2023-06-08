@@ -47,7 +47,7 @@ final class AboutUsViewController: UIViewController {
     }
     
     private func makeAnimation() {
-        UIView.animate(withDuration: 2) {
+        UIView.animate(withDuration: 1.5) {
             self.gearImage.alpha = 0.15
             self.devOne.alpha = 1
             self.devTwo.alpha = 1
