@@ -16,10 +16,9 @@ final class DateTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = .clear
         view.backgroundColor = .systemBrown
-        view.setGradientBackground()
-        navigationController?.navigationBar.barTintColor = .systemBrown
+        enableBarSettings()
+        setTablewViewBackgroundToGradient()
     }
     
     //MARK: - Table View Data Source

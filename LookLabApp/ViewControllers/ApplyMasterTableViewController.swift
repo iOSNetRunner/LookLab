@@ -14,10 +14,11 @@ final class ApplyMasterTableViewController: UITableViewController {
     //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.rowHeight = 60
-        tableView.backgroundColor = .clear
         view.backgroundColor = .systemBrown
-        view.setGradientBackground()
+        enableBarSettings()
+        setTablewViewBackgroundToGradient()
     }
     
     //MARK: - Table View Data Source

@@ -19,6 +19,7 @@ final class LoginViewController: UIViewController {
     // MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.setGradientBackground()
     }
     

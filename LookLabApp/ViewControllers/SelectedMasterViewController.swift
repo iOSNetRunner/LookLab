@@ -23,6 +23,7 @@ final class SelectedMasterViewController: UIViewController {
     //MARK: - View life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .systemBrown
         view.setGradientBackground()
         setupInfo()

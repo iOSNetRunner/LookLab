@@ -16,6 +16,7 @@ final class TabBarController: UITabBarController {
     //MARK: - View life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         transferData()
         delegate = self
     }
